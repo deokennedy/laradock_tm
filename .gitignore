@@ -23,5 +23,7 @@
 !/.devcontainer/docker-compose.extend-example.yml
 
 docker-compose.custom.yml
+docker-compose.multi-php.yml
+docker-compose.multi-workspace.yml
 
 .DS_Store

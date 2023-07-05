@@ -529,6 +529,22 @@ RUN if [ ${INSTALL_BCMATH} = true ]; then \
 ;fi
 
 ###########################################################################
+# PHP Memcache: 特别加入
+###########################################################################
+
+ARG INSTALL_MEMCACHED=false
+
+RUN if [ ${INSTALL_MEMCACHED} = true ]; then \
+  # Install the php memcached extension
+  if [ $(php -r "echo PHP_MAJOR_VERSION;") = "7" ]; then \
+  echo '' | pecl -q install memcache-4.0.5.2; \
+  else \
+  echo '' | pecl -q install memcache; \
+  fi \
+  && docker-php-ext-enable memcache \
+  ;fi
+
+###########################################################################
 # PHP Memcached:
 ###########################################################################
 
